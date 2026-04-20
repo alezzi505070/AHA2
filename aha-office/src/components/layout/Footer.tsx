@@ -1,0 +1,46 @@
+import { NAV_LINKS, CONTACT } from '@/data/content';
+import { Mail, Phone } from 'lucide-react';
+
+export const Footer = () => {
+  return (
+    <footer className="bg-[#0D0D0D] relative border-t border-white/5 pt-16 pb-8">
+      <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-accent to-transparent opacity-50" />
+      
+      <div className="container mx-auto px-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+          
+          <div className="flex flex-col items-center md:items-start text-center md:text-right">
+            <span className="text-3xl font-serif text-white font-bold mb-4">AHA Office</span>
+            <p className="text-white/60 mb-2">عضو معتمد في طلال أبو غزاله وشركاه الدولي</p>
+          </div>
+
+          <div className="flex flex-col items-center justify-center gap-4">
+            <div className="flex flex-wrap justify-center gap-6">
+              {NAV_LINKS.map(link => (
+                <a key={link.label} href={link.href} className="text-white/70 hover:text-white transition-colors">
+                  {link.label}
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <div className="flex flex-col items-center md:items-end gap-4">
+            <div className="flex gap-4">
+              <a href={`mailto:${CONTACT.email}`} className="w-10 h-10 rounded-full glass flex flex-col items-center justify-center text-white/70 hover:bg-white/10 transition-colors">
+                <Mail size={20} />
+              </a>
+              <a href={CONTACT.whatsapp} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full glass flex flex-col items-center justify-center text-white/70 hover:bg-white/10 transition-colors">
+                <Phone size={20} />
+              </a>
+            </div>
+          </div>
+          
+        </div>
+        
+        <div className="text-center text-white/40 pt-8 border-t border-white/10 text-sm">
+          <p>© 2024 مكتب عبد الرؤوف حسان. جميع الحقوق محفوظة.</p>
+        </div>
+      </div>
+    </footer>
+  );
+};

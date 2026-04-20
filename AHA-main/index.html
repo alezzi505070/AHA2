@@ -1,0 +1,1238 @@
+<!--
+	Author: W3layouts
+	Author URL: http://w3layouts.com
+	License: Creative Commons Attribution 3.0 Unported
+	License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html lang="zxx" data-theme="light">
+
+<head>
+	<title>AHA Office</title>
+	<!-- Meta tag Keywords -->
+	<meta name="color-scheme" content="light dark">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="keywords" content="Garden Care web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design"
+	/>
+	 <script>
+    // Wrap everything in an IIFE to avoid global scope pollution
+(function() {
+    // Global variables for flip cards and popup
+    let flipCards, popupOverlay, popupTitle, popupDescription, closePopup;
+
+    
+const srvServiceInfo = {
+    'fire-fighting': {
+        title: 'التدقيق الخارجي',
+        description: '<span style="color: brown;">إن عمليات التدقيق الخارجي لدينا مصممة لمنح عملائنا:</span><ul>' +
+            '<li>مشورة أعمال لمساعدة المالكين والمساهمين والمدراء في اتخاذ قرارات عمل صائبة.</li>' +
+            '<li>النصائح والارشادات لتحقيق أهدافهم ومساعدة الإدارة في اتخاذ القرارات المناسبة.</li>' +
+            '<li>تطوير وتبادل الأفكار مع العميل لإنشاء تحسينات في الضوابط والإجراءات والربحية في النهاية.</li>' +
+            '<li>تركيز واضح ومتسق على القضايا الرئيسية في جميع العمليات العالمية والمحليـة.</li>' +
+            '<li>نهج عملي على مدار العام يهدف إلى توقع المشكلات وتقديم الدعم العملي لحلها في الوقت المناسب.</li>' +
+            '</ul>'
+    },
+    'low-current': {
+		title: 'التدقيق الداخلي',
+        description: '<span style="color: brown;">الهدف الاساسي من التدقيق الداخلي هو تعزيز نظام الرقابة الداخلية ،يقوم التدقيق الداخلي بخدمة فعالية شركات الأعمال حيث يعرض ما يلي، من بين أمور أخرى:</span><ul>' +
+            '<li>مشورة سليمة عن العمليات والأداء والضوابط الداخلية.</li>' +
+            '<li>تقييم مدى امتثال الإجراءات المعتمدة للسياسات الموضوعة.</li>' +
+            '<li>تقييم مدى تنفيذ أفضل الممارسات في كافة أرجاء المنشأة.</li>' +
+            '<li>تصميم خطة تفصيلية للمراجعة الداخلية وإعارة مهنيين على درجة عالية من الكفاءة والخبرة.</li>' +
+            '<li>تنفيذ خطة المراجعة الداخلية وذلك لفترة زمنية محددة.</li>' +
+            '</ul>'
+    },
+	'other-financial-services': {
+        title: 'خدمات مالية أخرى',
+        description: '<span style="color: brown;">خدمات الإجراءات المتفق عليها:</span><ul>' +
+            '<li>يحتاج تكليف وضع الإجراءات المتفق القيام بإجراءات معينة ذات طبيعة دقيقية بخصوص بنود معينة لبيانات مالية أو كشف مالي أو حتى مجموعــــــــــة كاملة من البيانات المالية يتفق عليها مدقق الحسابات والعميل وأي طرف ثالث ملائم، وعند إعداد تقارير مالية بنتائج فعلية</li>' +
+            '<li>نحن في مكتبنا نقوم بتكليفات الإجراءات المتفق عليها حسب "المعايير الأخلاقية المهنية للمحاسبين المهنيين" الصادرة عن الاتحاد الدولـــــــــــــــــي للمحاسبين ووفق الشروط المحددة المتفق عليها في هذه التكليفات</li>' +
+            '</ul>' +
+            '<span style="color: brown;">تدقيق أو مراجعة عناصر من البيانات المالية:</span><ul>' +
+            '<li>تدقيق جزء من البيانات المالية أو عنصر من عناصر نشاط المنشاة</li>' +
+            '<li>ً متماشيا مع ما تتطلبه المعايير الدولية من الإجراءات الشمولية لضمـــــــان تقديـم الخدمات المناسبة للعملاء بالإضافة إلى ما يتطلبه من تقديــــــــــــم المشــورة والرأي للوصول إلى الأهداف المطلوبة من قبل المنشاة.</li>' +
+            '</ul>' +
+            '<span style="color: brown;">الخدمات المحاسبية ومسك السجلات:</span><ul>' +
+            '<li>أما خدماتنا الخاصة بالمحاسبة ومسك الدفاتر فهي مصممة لتناســـــــــــــب احتياجات عملائنا الفردية. ففريقنا المهني على علم ودراية بجميع البرامـــــج المحاسبية الرئيسية وقادر على تصميم العمليات الفنية حسب متطلبــات العملاء حيث يتمتع بالخبرة العالية ويسعى دائما إلى بناء علاقات عمل قوية مع عملائنا.</li>' +
+            '<li>ناهيك عن أن مكتبنا يقدم الفعالية وتزود معلومات إدارية دقيقة ومفيدة للتركيز على إدارة الأعمال بدلا من إدارة إضاعة الوقت.</li>' +
+            '</ul>'
+    },
+    'consultant': {
+        title: 'الإستشارات المالية والإقتصادية',
+        description: '<span style="color: brown;">تقييم الأعمال:</span><ul>' +
+            '<li>إن مرحلة التطور الاقتصادي التي نعيشها حاليا والحاجة لوجود منظمات الأعمال صغيرة ومتوسطة الحجم والشراكات مقرونة برغبة المؤسسات العائلية بزيادة حصصها السوقية تتطلب عمل استثمارات كبيرة وبالتالي لابد من استقطاب مستثمرين خارجيين لدعم منظمات الأعمال في السوق وإبقائها من خلال ضخ الاستثمارات اللازمة، وعليه فإن اللجوء إلى الاندماج أو شراء منظمات الأعمال قد يكون هو الإستراتيجية المناسبة في ظل تلك الظروف.</li>' +
+            '<li>لأغراض معرفة القيمة السوقية لمنظمات الأعمال لابد من عمل دراسات التقييم. إن دراسات التقييم هي عبارة عن خليط ما بين العلم والخبرة لإفراز قيمة عادلة للحصة التي يرغب المستثمر بشرائها في منظمات الأعمال.</li>' +
+            '<li>هناك عدة طرق لتقييم القيمة العادلة لمنظمات الأعمال تعتمد على طبيعة العمل. إن مكتبنا من خلال خبرائها المؤهلين في هذا المجال تقوم بإعداد مثل هذه الدراسات للأغراض تقدير القيمة العادلة لمنظمات الأعمال باستخدام أفضل وأحدث الأساليب.</li>' +
+            '</ul>' +
+            '<span style="color: brown;">دراسة الجدوى الاقتصادية:</span><ul>' +
+            '<li>نقوم بمساعدة المنشأة في دراسة وتحليل السوق لأغراض تقييم الموقف السوقي لمنتجاتها الحالية، مثل قابلية السوق وإمكانية تقديم أو عرض منتج جديد ووضعه التنافسي، بالإضافة إلى دراسة وإعداد التحاليل المالية بغرض تحديد أو استعراض الجدوى الاقتصادية من نشاط أو مشروع استثماري مقترح.</li>' +
+            '</ul>' +
+            '<span style="color: brown;">خدمات الخصخصة:</span><ul>' +
+            '<li>نقوم بإعداد الدراسات الخاصة بتحويل الشركات الحكومية من القطاع العام إلى القطاع الخاص، حيث نقوم بمساعدة الحكومة في إجراءات الخصخصة وتحويل كافة أنشطة المنشأة إلى تجارية.</li>' +
+            '<li>إعداد الخطة الرئيسية والتخطيط الاستراتيجي لتسهيل تحويل المنشأة من القطاع العام إلى القطاع الخاص.</li>' +
+            '<li>تطوير وتحسين معدلات استغلال موجوداتها وإعادة هيكلتها وإعداد عروض البيع العام.</li>' +
+            '</ul>' +
+            '<span style="color: brown;">تصفية الشركات:</span><ul>' +
+            '<li>بالنسبة للتصفية، فيمكن أن تخضع الشركات إلى التصفية لعدة أسباب والذي يترتب عليه إنهاء الترتيبات اللازمة من النواحي المحاسبية والقانونية. إن مكتبنا من خلال كوادرها الخبيرة والمؤهلة في مجال تأسيس وتصفية الشركات تقدم لعملائها تلك الخدمات بشكل مهني.</li>' +
+            '<li>إن خدماتنا المهنية والمتعددة في هذا المجال تفي باحتياجات المنشآت وتساهم في تبسيط سير العمل وانضباطه وتوفير الوقت والأدوات الرقابية الفعالة.</li>' +
+            '<li>تنظيم وإعادة هيكلة الشركات ، المؤسسات والوحدات الاقتصادية.</li>' +
+            '<li>إعداد الأنظمة المالية والإدارية.</li>' +
+            '</ul>'
+    },
+	'corporate-governance': {
+        title: 'خدمات الحوكمة أو حوكمة الشركات',
+        description: '<ul>' +
+			'<li>أصبحت إدارة المخاطر وتنفيذ حوكمة قوية للشركات الآن توقعاً مجتمعياً وضرورة تنظيمية في معظم الشركات ذات الأحجام المختلفة. في حين أن العديد من الشركات مطالبة بموجب القانون أو اللوائح أو أصحاب المصلحة بتطبيق هذه العمليات والإجراءات، يختار المزيد منهم القيام بذلك لأنهم يدركون أن هذا جزء من استراتيجية عمل ناجحة.</li>'+
+            '<li>تقدم خدمة الحوكمة لدينا ممارسات حوكمة شركات شاملة تساعد المؤسسة في الحد من المخاطر وتفادي سوء الإدارة.</li>' +
+            '<li>أما ممارسة حوكمة الشركات لدينا فهي العملية والهيكلة المستخدمتان في توجيه وإدارة أعمال وشؤون المؤسسة بهدف ضمان سلامتها وتعزيز قيمة المساهمين.</li>' +
+            '<li>يتكون فريقنا لحوكمة الشركات من متخصصين من المهنيين والقانونيين الخبراء في ممارسات ومسائل حوكمة الشركات، كما إنه على اطلاع ودراية تامة بتوسعات حوكمة الشركات المحلية والدولية.</li>' +
+            '<li>كما يقوم فريقنا بتقديم تحقيقات تشريعية وقضايا حوكمة شركات ومشاركة مالكين. وتقديم المشورة بشأن هياكل الحوكمة لديها، وتوفير مجموعة من الخدمات المصممة لدعم العملاء في الحفاظ على أطر قوية للحوكمة والضمان.</li>' +
+            '<li>كما يقدمون المشورة بشأن إدارة المخاطر بشكل فعال ويساعدون على ترسيخ الشفافية والمساءلة لقضايا الحوكمة في المؤسسات.</li>' +
+            '</ul>'
+    },
+	'zakat': {
+        title: 'خدمات الزكاة والضرائب',
+        description:'<ul>' +
+            '<li>الضرائب عنصر حاسم في جميع العمليات التجارية لتحقيق الأرباح والاستمرارية في التشغيل، ويوفر نظام الضرائب في اليمن العديد من التحديات الفريدة.</li>' +
+            '<li>قد يؤدي عدم الامتثال للقوانين واللوائح غير الواضحة أحيانًا إلى التزامات زمنية كبيرة ورسوم مهنية وعقوبات ضريبية. من ناحية أخرى، توفر التكلفة الضريبية الفعالة ميزة تنافسية مميزة عند تنفيذ الاستراتيجيات الضريبية المناسبة.</li>' +
+            '<li>خدماتنا الاستشارية الضريبية متعددة الاختصاصات وتشمل مجموعة كاملة من الضرائب المباشرة وغير المباشرة والشخصية. نحن نعمل مع الشركات الأخرى الأعضاء في طلال أبو غزالة وشركاه الدولية المنتشرة في جميع أنحاء العالم في تقديم استشارات ضريبية وطنية ودولية ذات جودة عالية.</li>' +
+            '<li>نحن متحمسون للعمل مع مستشاري الضرائب المحترفين لعملائنا والعمل كمستشارين ضرائب محترفين في مجموعة واسعة من المسائل التجارية.</li>' +
+            '</ul>'
+		}
+};
+
+
+    function setupFlipCards() {
+        console.log("Setting up flip cards");
+        flipCards = document.querySelectorAll('.flip-card-back ul li');
+        popupOverlay = document.getElementById('popupOverlay');
+        popupTitle = document.getElementById('popupTitle');
+        popupDescription = document.getElementById('popupDescription');
+        closePopup = document.querySelector('.close-popup');
+
+        if (!flipCards.length) {
+            console.error("No flip cards found. Check your HTML structure.");
+            return;
+        }
+
+        flipCards.forEach(item => {
+            item.addEventListener('click', function() {
+                const service = this.getAttribute('data-service');
+                console.log("Flip card clicked:", service);
+                if (serviceInfo[service]) {
+                    popupTitle.textContent = service;
+                    popupDescription.textContent = serviceInfo[service];
+                    popupOverlay.style.display = 'block';
+                } else {
+                    console.warn("No info found for service:", service);
+                }
+            });
+        });
+
+        if (closePopup) {
+            closePopup.addEventListener('click', function() {
+                popupOverlay.style.display = 'none';
+            });
+        } else {
+            console.error("Close popup button not found");
+        }
+
+        if (popupOverlay) {
+            popupOverlay.addEventListener('click', function(e) {
+                if (e.target === popupOverlay) {
+                    popupOverlay.style.display = 'none';
+                }
+            });
+        } else {
+            console.error("Popup overlay not found");
+        }
+    }
+
+    function hideURLbar() {
+        if (typeof window.scrollTo === 'function') {
+            window.scrollTo(0, 1);
+        }
+    }
+
+    function inView(opt) {
+        if (!opt || !opt.selector) {
+            console.error('Valid selector required for inView');
+            return;
+        }
+       
+        const elems = Array.from(document.querySelectorAll(opt.selector));
+        if (!elems.length) {
+            console.warn(`No elements found for selector: ${opt.selector}`);
+            return;
+        }
+
+        const once = opt.once !== false;
+        const offsetTop = opt.offsetTop || 0;
+        const offsetBot = opt.offsetBot || 0;
+        let winHeight = window.innerHeight;
+        let ticking = false;
+
+        function update() {
+            elems.forEach((elem, index) => {
+                const rect = elem.getBoundingClientRect();
+                if (rect.bottom >= offsetTop && rect.top <= winHeight - offsetBot) {
+                    elem.classList.add('in-view');
+                    if (once) {
+                        elems.splice(index, 1);
+                    }
+                } else if (!once) {
+                    elem.classList.remove('in-view');
+                }
+            });
+            ticking = false;
+        }
+
+        function onResize() {
+            winHeight = window.innerHeight;
+            requestTick();
+        }
+       
+        function onScroll() {
+            requestTick();
+        }
+       
+        function requestTick() {
+            if (!ticking) {
+                requestAnimationFrame(update);
+                ticking = true;
+            }
+        }
+
+        window.addEventListener('resize', onResize, { passive: true });
+        window.addEventListener('scroll', onScroll, { passive: true });
+        window.addEventListener('touchmove', onScroll, { passive: true });
+       
+        onResize();
+    }
+
+    function isValidEmail(email) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+
+    function isValidMobile(mobile) {
+        return /^\d{9}$/.test(mobile);
+    }
+
+    function setupSlider(sliderSelector, slideSelector, dotSelector) {
+        console.log(`Setting up slider: ${sliderSelector}`);
+        const slider = document.querySelector(sliderSelector);
+        const slides = document.querySelectorAll(slideSelector);
+        const dots = document.querySelectorAll(dotSelector);
+        
+        if (!slider || slides.length === 0) {
+            console.error(`Slider or slides not found for ${sliderSelector}. Check your HTML structure and class names.`);
+            return;
+        }
+
+        const totalSlides = slides.length;
+        let currentSlide = 0;
+
+        function showSlide(index) {
+            if (index < 0 || index >= totalSlides) {
+                console.error('Invalid slide index:', index);
+                return;
+            }
+            slider.style.transform = `translateX(-${index * 100}%)`;
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+            currentSlide = index;
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            showSlide(currentSlide);
+        }
+
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => showSlide(index));
+        });
+
+        let slideInterval = setInterval(nextSlide, 5000);
+
+        slider.addEventListener('mouseenter', () => clearInterval(slideInterval));
+        slider.addEventListener('mouseleave', () => slideInterval = setInterval(nextSlide, 5000));
+
+        showSlide(0);
+    }
+	function tagChangeSlide(slideNumber) {
+        document.querySelectorAll('.tag-slide').forEach(slide => {
+            slide.classList.remove('active');
+        });
+        document.getElementById('tag-slide' + slideNumber).classList.add('active');
+    }
+	window.tagChangeSlide = tagChangeSlide;
+	function updateScrollIndicator() {
+            const scrollPercentage = (infoBox.scrollTop / (infoBox.scrollHeight - infoBox.clientHeight)) * 100;
+            const indicatorPosition = Math.min(100 - scrollPercentage, 100);
+            scrollIndicator.style.bottom = `${indicatorPosition}%`;
+
+            // Show indicator only when not at the bottom
+            if (scrollPercentage < 99) {
+                scrollIndicator.style.opacity = '1';
+            } else {
+                scrollIndicator.style.opacity = '0';
+            }
+        }
+
+    function initializeWebsite() {
+        console.log("Initializing website");
+
+        setupSlider('.slider', '.slide', '.dot');
+        setupSlider('.slider1', '.slide1', '.dotnew');
+
+        setTimeout(hideURLbar, 0);
+
+        inView({
+            selector: '.about-us-row',
+            once: false,
+            offsetTop: 0,
+            offsetBot: 50
+        });
+		
+        function handleSecondContainer() {
+            const secondContainer = document.querySelector('.about-us-container:nth-of-type(2) .about-us-row');
+            if (!secondContainer) {
+                console.warn("Second container not found");
+                return;
+            }
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        secondContainer.classList.add('in-view');
+                    } else {
+                        secondContainer.classList.remove('in-view');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            observer.observe(secondContainer);
+        }
+		
+        handleSecondContainer();
+		
+
+        const menuBtn = document.querySelector('.my-2023-menu-btn');
+        const banner = document.querySelector('.banner');
+
+        function checkScroll() {
+            if (banner && menuBtn) {
+                const bannerBottom = banner.offsetTop + banner.offsetHeight;
+                if (window.pageYOffset > bannerBottom) {
+                    menuBtn.classList.add('scrolled');
+                } else {
+                    menuBtn.classList.remove('scrolled');
+                }
+            }
+        }
+
+        window.addEventListener('scroll', checkScroll);
+        checkScroll();
+		
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                var name = this.Name.value.trim();
+                var email = this.Email.value.trim();
+                var mobile = this.Mobile.value.trim();
+                var message = this.Message.value.trim();
+                
+                if (name === '' || email === '' || mobile === '' || message === '') {
+                    alert('Please fill in all fields');
+                    return;
+                }
+                
+                if (!isValidEmail(email)) {
+                    alert('Please enter a valid email address');
+                    return;
+                }
+                
+                if (!isValidMobile(mobile)) {
+                    alert('Please enter a valid mobile number');
+                    return;
+                }
+                
+                console.log('Form submitted:', { name, email, mobile, message });
+                alert('Form submitted successfully!');
+                this.reset();
+            });
+        } else {
+            console.warn("Contact form not found");
+        }
+		
+        setupFlipCards();
+		// Setup for srv-more-info buttons
+		const srvMoreInfoButtons = document.querySelectorAll('.srv-more-info');
+    const srvContainerWrapper = document.querySelector('.srv-container-wrapper');
+    const srvInfoTitle = document.getElementById('srvInfoTitle');
+    const srvInfoDescription = document.getElementById('srvInfoDescription');
+    const srvCloseInfoButton = document.querySelector('.srv-close-info');
+
+    if (srvMoreInfoButtons.length && srvContainerWrapper && srvInfoTitle && srvInfoDescription && srvCloseInfoButton) {
+        srvMoreInfoButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const service = button.getAttribute('data-service');
+                const info = srvServiceInfo[service];
+                if (info) {
+                    srvInfoTitle.textContent = info.title;
+                    srvInfoDescription.innerHTML = info.description;
+                    srvContainerWrapper.style.transform = 'translateX(-50%)';
+                    srvContainerWrapper.classList.add('reduced-height'); // Add this line
+                } else {
+                    console.warn("No info found for service:", service);
+                }
+            });
+        });
+
+        srvCloseInfoButton.addEventListener('click', () => {
+            srvContainerWrapper.style.transform = 'translateX(0)';
+            srvContainerWrapper.classList.remove('reduced-height'); // Add this line
+        });
+    } else {
+        console.warn("Some srv- elements not found. Check your HTML structure.");
+    }
+}
+	
+    function forceLightMode() {
+        document.body.classList.add('light-mode');
+    }
+	
+    function switchToDarkMode() {
+        document.documentElement.style.setProperty('color-scheme', 'dark', 'important');
+        document.documentElement.style.setProperty('--background-color', '#121212', 'important');
+        document.documentElement.style.setProperty('--text-color', '#ffffff', 'important');
+        
+        applyStyles();
+    }
+
+    function applyStyles() {
+        const isDarkMode = document.documentElement.style.getPropertyValue('color-scheme') === 'dark';
+        
+        document.body.style.setProperty('background-color', 'var(--background-color)', 'important');
+        document.body.style.setProperty('color', 'var(--text-color)', 'important');
+        
+        const allElements = document.getElementsByTagName('*');
+        for (let i = 0; i < allElements.length; i++) {
+            const element = allElements[i];
+            element.style.setProperty('background-color', 'inherit', 'important');
+            element.style.setProperty('color', 'var(--text-color)', 'important');
+            
+            if (isDarkMode) {
+                replaceColor(element, '#553637', '#ffffff');
+            }
+        }
+    }
+
+    function replaceColor(element, oldColor, newColor) {
+        const styles = window.getComputedStyle(element);
+        const properties = ['color', 'background-color', 'border-color'];
+        
+        properties.forEach(prop => {
+            if (styles[prop].toLowerCase() === oldColor.toLowerCase()) {
+                element.style.setProperty(prop, newColor, 'important');
+            }
+        });
+        
+        if (element.style.color.toLowerCase() === oldColor.toLowerCase()) {
+            element.style.setProperty('color', newColor, 'important');
+        }
+    }
+
+    function toggleMode() {
+        const currentMode = document.documentElement.style.getPropertyValue('color-scheme');
+        if (currentMode === 'dark') {
+            forceLightMode();
+        } else {
+            switchToDarkMode();
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', initializeWebsite);
+
+    forceLightMode();
+
+    window.addEventListener('load', function() {
+        applyStyles();
+        setTimeout(applyStyles, 100);
+    });
+
+    const observer = new MutationObserver(mutations => {
+        mutations.forEach(mutation => {
+            if (mutation.type === 'childList') {
+                mutation.addedNodes.forEach(node => {
+                    if (node.nodeType === 1) {
+                        applyStyles();
+                    }
+                });
+            }
+        });
+    });
+
+    observer.observe(document.body, { childList: true, subtree: true });
+
+    setInterval(applyStyles, 1000);
+
+    const style = document.createElement('style');
+    style.textContent = `
+        * {
+            background-color: var(--background-color) !important;
+            color: var(--text-color) !important;
+        }
+    `;
+    document.head.appendChild(style);
+
+    const toggleButton = document.createElement('button');
+    toggleButton.textContent = 'Toggle Light/Dark Mode';
+    toggleButton.style.position = 'fixed';
+    toggleButton.style.top = '10px';
+    toggleButton.style.right = '10px';
+    toggleButton.style.zIndex = '9999';
+    toggleButton.addEventListener('click', toggleMode);
+    document.body.appendChild(toggleButton);
+
+    console.log("Script fully loaded and executed");
+})();
+    </script>
+	<!--// Meta tag Keywords -->
+	<!-- css files -->
+	<link rel="stylesheet" href="css/bootstrap.css" type="text/css" media="all">
+	<!-- Bootstrap-Core-CSS -->
+	<link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+	<!-- Style-CSS -->
+	<link rel="stylesheet" href="css/font-awesome.css" type="text/css" media="all">
+	<link rel="stylesheet" href="../fonts/NotoSansArabic-VariableFont_wdth,wght.woff">
+
+	<!-- Font-Awesome-Icons-CSS -->
+	<link href="css/nav.css" rel="stylesheet" type="text/css" media="all" />
+	<!-- For-Navigation-CSS -->
+	<link href="css/lsb.css" rel="stylesheet" type="text/css" media="all">
+	<!-- For-Gallery -->
+	<!-- //css files -->
+	<!-- web fonts -->
+	<link href="//fonts.googleapis.com/css?family=Josefin+Sans:100,100i,300,300i,400,400i,600,600i,700,700i&amp;subset=latin-ext"
+	    rel="stylesheet">
+	<link href="//fonts.googleapis.com/css?family=Nunito+Sans:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;subset=latin-ext"
+	    rel="stylesheet">
+	<!-- //web fonts -->
+</head>
+
+<body>
+	<!-- banner -->
+	<div class="banner" style="background: url('Images2/header.jpeg') no-repeat center; background-size: cover;">
+        <div class="banner-top-header">
+            <div class="aha-overlay"></div>
+            <div class="agile1">
+                <!-- navigation section -->
+                <div class="my-2023-unique-menu">
+					<input type="checkbox" id="my-2023-unique-active">
+					<label for="my-2023-unique-active" class="my-2023-menu-btn"><span></span></label>
+					<label for="my-2023-unique-active" class="my-2023-close"></label>
+					<div class="my-2023-wrapper">
+					  <ul>
+						<li><a href="#">Home</a></li>
+						<li><a href="#about">About</a></li>
+						<li><a href="#services">Services</a></li>
+						<li><a href="#mail">Contact us</a></li>
+						
+					  </ul>
+					</div>
+				  </div>
+                <!-- /navigation section -->
+            </div>
+        </div>
+        <div class="w3layouts_banner_info">
+            <section class="wrapper agileits-w3layouts_wrapper_home text-center">
+                <div class="logo-container">
+                    <img src="Images2/newlogo.png" alt="Company Logo" class="company-logo">
+                </div>
+            </section>
+        </div>
+    </div>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<a href="https://api.whatsapp.com/send?phone=0060173740140" class="float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+	<!-- //banner -->
+
+	<div>
+		<p>
+			<br><br>
+		</p>
+	</div>
+	
+	<div class="title-container">
+		<div class="title-container">
+		<h3 class="title-w3l">لمحة حول شركة الإرتباط</h3>
+		</div>
+	</div>
+	<div class="tag-info-slider">
+  <div class="tag-slider-container">
+    <div class="tag-slide active" id="tag-slide1">
+      <h2>نبذة عن الشركة</h2>
+      <p>طلال أبوغزاله العالمية، هي شركة قابضة تضم عدة شركات مهنية ضمن مجموعتها. وباعتبارها مؤسسة عالمية رائدة، حققت قدرا كبيرا من الخبرات والإنجازات الهامة في مجال الخدمات المهنية منذ تأسيسها. وتوظف طلال أبو غزاله العالمية فرقا من المهنيين العرب المؤهلين تأهيلا عاليا وذوي الخبرات المميزة المتواجدين رهن إشارتكم في كل عاصمة عربية لتوفير خدمات الخبراء في الأمور المالية والصناعية لتلبية احتياجات العملاء.</p>
+      <button class="tag-slide-button" onclick="tagChangeSlide(2)">لمحة تاريخية</button> 
+    </div>
+    <div class="tag-slide" id="tag-slide2">
+      <h2>لمحة تاريخية</h2>
+      <p>أسست مجموعة طلال أبو غزاله عام 1972. تعمل طلال أبوغزاله العالمية اليوم من خلال أكثر من (100) مكتبا منتشرة في المدن الرئيسية في العالم العربي، وتمتد خدماتها ضمن مساحة تقرب من (5) ملايين ميل مربع وتخاطب ما مجموعه (200) مليون من السكان. إن هذه الحقائق تؤهلنا لنكون مؤسسة إقليمية من المستشارين المهنيين في الخدمات المتنوعة، الذين يتميزون بمعرفة العديد من اللغات ومن ذوي الكفاءات والخبرات المميزة.</p>
+      <button class="tag-slide-button" onclick="tagChangeSlide(1)">نبذة عن الشركة</button>
+    </div>
+  </div>
+	</div>
+
+	
+	<section class="about-us-section" id="about">
+    <div class="about-us-container">
+
+        <div class="about-us-row">
+            <div class="about-us-col about-us-text">
+                <h4>من نحن</h4>
+                <p>تأسس مكتب عبد الرؤوف حسان في عام 1996م وهو عضو في طلال أبو غزالة وشركاه الدولي (TAG-Audit).</p>
+				<p>وهو مكتب متكامل الخدمات يقود عملياته قيادات وطنية يدعمها فرق إقليمية متخصصة في عملها ومجموعة من الموظفين الموهوبين الذين يتمتعون بقدرات إدارية وخبرات طويلة في مجالات مختلفة.</p>
+				<p>إن القدرات والكفاءات المتميزة لموظفينا والتي نسخرها في جميع عملياتنا قد تم تطويرها. تطور فريقنا في شكله الحالي من خلال إشراك المتخصصين الذين تميزوا في مجالاتهم المختلفة، بما في ذلك التدقيق، الضرائب، الاستشارات، تأسيس وتشكيل الشركات، الخدمات الإدارية، والمشورة الضريبية.</p>
+
+            </div>
+            <div class="about-us-col about-us-image">
+                <img src="Images2/Asset 9.png" alt="About Us Image">
+            </div>
+        </div>
+    </div>
+	<div class="about-us-container">
+       
+        <div class="about-us-row">
+            <div class="about-us-col about-us-text">
+                <h4>رؤيتنا</h4>
+                <p>رؤيتنا هي الاستمرار في الحفاظ على مكانتنا كمكتب رائد من خلال تقديم خدمه متميزة.
+					من حيث جودة الاشخاص المؤهلين ومبادئنا هي الأسس التي يبني عليها عملنا، إننا
+					ومع اعتقادنا الراسخ أن تقديم الخدمات لعملائنا هي مسألة ترقى إلى أعلى مستوى
+					من درجات الشعور بالمسؤولية والمشاركة مع العميل في تطوير وتنظيم أعماله فإننـا
+					نجد من واجبنا أن نكون حريصين كل الحرص على تقديم حلول متكاملة تشمل جميع
+					أنشطة العميل. </p>
+            </div>
+            <div class="about-us-col about-us-image">
+                <img src="Images2/vision.png" alt="About Us Image">
+            </div>
+        </div>
+    </div>
+	<div class="about-us-container">
+       
+        <div class="about-us-row">
+            <div class="about-us-col about-us-text">
+                <h4>بماذا نتميز</h4>
+                <p>تأثيرنا المباشر على جودة الخدمة يستند إلى خبرتنا في مجموعة متنوعة من القطاعات وتوجهنا نحو المستقبل. نحن نركز على الجودة والتفاصيل، وندعم اتخاذ قرارات ذكية. خبراتنا المتخصصة تمكننا من الابتكار والتأكيد على العمل المستدام.</p>
+            </div>
+            <div class="about-us-col about-us-image">
+                <img src="Images2/Asset 10.png" alt="About Us Image">
+            </div>
+        </div>
+    </div>
+</section>
+	
+	  
+	
+	
+	<!-- services -->
+	
+	<!-- <div class="flip-services" id="services"> 
+		
+		<div class="flip-container">
+			<div class="flip-card">
+				<div class="flip-card-inner">
+					<div class="flip-card-front">
+						<img src="Images2/Asset 18.png" alt="Card Image" class="card-image">
+						<h4>التدقيق الخارجي</h4>
+						<h6>رؤية المزيد</h6>
+					</div>
+					<div class="flip-card-back">
+						<ul class="flip-card-font2 arabic-list">
+							<li data-service="تدقيق القوائم المالية">تدقيق القوائم المالية</li>
+                            <li data-service="إعداد تقارير متخصصة">إعداد تقارير متخصصة ًوفقا لمعايير المحاسبة</li>
+                            <li data-service="خدمات التأكيد الأخرى">خدمات التأكيد الأخرى من صحة البيانات المالية</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="flip-card">
+				<div class="flip-card-inner">
+					<div class="flip-card-front">
+						<img src="Images2/Asset 21.png" alt="Card Image" class="card-image">
+						<h4>التدقيق الداخلي</h4>
+						<h6>رؤية المزيد</h6>
+					</div>
+					<div class="flip-card-back">
+						<ul class="flip-card-font2 arabic-list">
+							<li>التدقيق الداخلي و المراجعة الداخلية</li>
+							<li>مراجعة انظمة الرقابة الداخلية وتطويرها</li>
+							<li>مخاطر الأعمال و تدقيق نظم المعلومات</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			
+			<div class="flip-card">
+				<div class="flip-card-inner">
+					<div class="flip-card-front">
+						<img src="Images2/Asset 19.png" alt="Card Image" class="card-image">
+						<h4>خدمات مالية</h4>
+						<h6>رؤية المزيد</h6>
+					</div>
+					<div class="flip-card-back">
+						<ul class="flip-card-font2 arabic-list">
+							<li>خدمات الإجراءات المتفق عليه</li>
+							<li>الخدمات المحاسبيـة ومسـك السجـلات</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			
+			<div class="flip-card">
+				<div class="flip-card-inner">
+					<div class="flip-card-front">
+						<img src="Images2/Asset 16.png" alt="Card Image" class="card-image">
+						<h4>خدمات الحوكمة</h4>
+						<h6>رؤية المزيد</h6>
+					</div>
+					<div class="flip-card-back">
+						<ul class="flip-card-font2 arabic-list">
+							<li>خدمـات الحوكمة أو حوكمــة الشركات</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			
+			<div class="flip-card">
+				<div class="flip-card-inner">
+					<div class="flip-card-front">
+						<img src="Images2/Asset 17.png" alt="Card Image" class="card-image">
+						<h4>الإستشارات الماليـة</h4>
+						<h4>والإقتصاديـة</h4>
+						<h6>رؤية المزيد</h6>
+					</div>
+					<div class="flip-card-back">
+						<ul class="flip-card-font2 arabic-list">
+							<li>تقييم الأعمال</li>
+							<li>دراسة الجـدوى الاقتصادية</li>
+							<li>خدمات الخصخصــة</li>
+							<li>تصفية الشركات</li>
+							<li>إعداد الأنظمـة المالية و الإداريــة</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			
+			<div class="flip-card">
+				<div class="flip-card-inner">
+					<div class="flip-card-front">
+						<img src="Images2/Asset 20.png" alt="Card Image" class="card-image">
+						<h4>خدمات الزكاة</h4>
+						<h4>والضرائب</h4>
+						<h6>رؤية المزيد</h6>
+					</div>
+					<div class="flip-card-back">
+						<ul class="flip-card-font3 arabic-list">
+							<li>دوليا</li>
+							<li>محليا</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+	<div id="popupOverlay" class="popup-overlay">
+        <div class="popup-content">
+            <span class="close-popup">&times;</span>
+            <h2 id="popupTitle"></h2>
+            <p id="popupDescription"></p>
+        </div>
+    </div>-->
+	<div class="title-container"  id="services">
+		<div class="title-container">
+		<h3 class="title-w3l">ماهي <span>خدماتنا</span></h3>
+		</div>
+	</div>
+	<div class="srv-container-wrapper">
+        <div class="srv-container">
+            <div class="srv-services-grid">
+                <div class="srv-service-item">
+                    <div class="srv-service-icon">
+                        <img src="Images2/Asset 18.png" alt="خدمات">
+                    </div>
+                    <div class="srv-service-content">
+                        <h3 class="srv-service-title">التدقيق الخارجي</h3>
+                        <button class="srv-more-info" data-service="fire-fighting">More Info</button>
+						<div class="scroll-indicator"></div>
+
+                    </div>
+                </div>
+                <div class="srv-service-item">
+                    <div class="srv-service-icon">
+                        <img src="Images2/Asset 21.png" alt="خدمات">
+                    </div>
+                    <div class="srv-service-content">
+                        <h3 class="srv-service-title">التدقيق الداخلي</h3>
+                        <button class="srv-more-info" data-service="low-current">More Info</button>
+                    </div>
+                </div>
+                <div class="srv-service-item">
+                    <div class="srv-service-icon">
+                        <img src="Images2/Asset 19.png" alt="خدمات">
+                    </div>
+                    <div class="srv-service-content">
+                        <h3 class="srv-service-title">خدمات مالية</h3>
+                        <button class="srv-more-info" data-service="other-financial-services">More Info</button>
+						<div class="scroll-indicator"></div>
+
+                    </div>
+                </div>
+				<div class="srv-service-item">
+                    <div class="srv-service-icon">
+                        <img src="Images2/Asset 16.png" alt="خدمات">
+                    </div>
+                    <div class="srv-service-content">
+                        <h3 class="srv-service-title">خدمات الحوكمة</h3>
+                        <button class="srv-more-info" data-service="corporate-governance">More Info</button>
+                    </div>
+                </div>
+				<div class="srv-service-item">
+                    <div class="srv-service-icon">
+                        <img src="Images2/Asset 17.png" alt="خدمات">
+                    </div>
+                    <div class="srv-service-content">
+                        <h3 class="srv-service-title" > الإستشارات المالية و الإقتصادية</h3>
+                        <button class="srv-more-info" data-service="consultant">More Info</button>
+                    </div>
+                </div>
+				<div class="srv-service-item">
+                    <div class="srv-service-icon">
+                        <img src="Images2/Asset 20.png" alt="خدمات">
+                    </div>
+                    <div class="srv-service-content">
+                        <h3 class="srv-service-title">خدمات الزكاة والضرائب</h3>
+                        <button class="srv-more-info" data-service="zakat">More Info</button>
+						<div class="scroll-indicator"></div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+		<div class="srv-container srv-info-container">
+            <div class="srv-info-box">
+                <div class="srv-info-content">
+                    <h2 id="srvInfoTitle" class="srv-info-title"></h2>
+                    <div id="srvInfoDescription" class="srv-info-description"></div>
+                </div>
+                <button class="srv-close-info">Close</button>
+            </div>
+        </div>
+    </div>
+            
+            
+        </div>
+    </div>
+	<div>
+		<P>
+			<br>
+			
+		</P>
+	</div>
+	<div class="title-container">
+		<h3 class="title-w3l">القطاعات التي يقدمها مكتبنا<span></span></h3>
+	</div>
+	<div class="custom-body-class">
+		<section class="fire-systems-container">
+			<div class="fire-systems-grid">
+				<div class="fire-systems-item">
+					<div class="fire-systems-icon">
+						<img src="Images2/4.png" alt="خدمات">
+					</div>
+					<div class="fire-systems-text">
+						خدمات تعليمية و صحية 
+					</div>
+				</div>
+				<div class="fire-systems-item">
+					<div class="fire-systems-icon">
+						<img src="Images2/5.png" alt="خدمات">
+					</div>
+					<div class="fire-systems-text">
+						شركات تجارية
+					</div>
+				</div>
+				<div class="fire-systems-item">
+					<div class="fire-systems-icon">
+						<img src="Images2/3.png" alt="خدمات">
+					</div>
+					<div class="fire-systems-text">
+						منظمات دولية
+					</div>
+				</div>
+				<div class="fire-systems-item">
+					<div class="fire-systems-icon">
+						<img src="Images2/2.png" alt="خدمات">
+					</div>
+					<div class="fire-systems-text">
+						شركات صناعية
+					</div>
+				</div>
+				<div class="fire-systems-item">
+					<div class="fire-systems-icon">
+						<img src="Images2/1.png" alt="خدمات">
+					</div>
+					<div class="fire-systems-text">
+						التكنولوجيا والإتصالات
+					</div>
+				</div>
+				<div class="fire-systems-item">
+					<div class="fire-systems-icon">
+						<img src="Images2/7.png" alt="خدمات">
+					</div>
+					<div class="fire-systems-text">
+						النقل والشحن
+					</div>
+				</div>
+				<div class="fire-systems-item">
+					<div class="fire-systems-icon">
+						<img src="Images2/8.png" alt="خدمات">
+					</div>
+					<div class="fire-systems-text">
+						وكالات السفريات والسياحة
+					</div>
+				</div>
+				<div class="fire-systems-item">
+					<div class="fire-systems-icon">
+						<img src="Images2/9.png" alt="خدمات">
+					</div>
+					<div class="fire-systems-text">
+						مؤسسات فكرية
+					</div>
+				</div>
+				<div class="fire-systems-item">
+					<div class="fire-systems-icon">
+						<img src="Images2/10.png" alt="خدمات">
+					</div>
+					<div class="fire-systems-text">
+						شركات التأمين
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+
+	<div>
+		<P>
+			<br>
+		</P>
+	</div>
+	<div class="title-container">
+		<h3 class="title-w3l">فعالية خدماتنا</h3>
+	</div>
+	
+	<section class="slider-section">
+		<div class="slider-container1">
+			<div class="slider1">
+				<div class="slide1">
+					<div class="testimonial1">
+						<div class="circle">
+							<img src="Images2/16.png" alt="star icon">
+						</div>
+						<p class="testimonial-text">نمتلك منهج مع فكـــر
+							تقييمي،سعي للحقائق
+							تقييم البدائل وتقديم
+							قرارات مقنعة</p>
+					</div>
+				</div>
+				<div class="slide1">
+					<div class="testimonial1">
+						<div class="circle">
+							<img src="Images2/11.png" alt="Icon">
+						</div>
+						<p class="testimonial-text">معرفة وتطبيق المعايير
+							المهنية وجميع التوجيهات
+							الفعالة بفعالية في تقديم
+							عملنا
+							</p>
+					</div>
+				</div>
+				<div class="slide1">
+					<div class="testimonial1">
+						<div class="circle">
+							<img src="Images2/17.png" alt="Icon">
+						</div>
+						<p class="testimonial-text">البحث عن التغيير وتنفيذه
+							أو المعتقدات القديمة: وعدم التعلق بالوضع الراهن
+							تحويل وتطوير ما نقوم به
+							كل يوم</p>
+					</div>
+				</div>
+				<div class="slide1">
+					<div class="testimonial1">
+						<div class="circle">
+							<img src="Images2/13.png" alt="Icon">
+						</div>
+						<p class="testimonial-text">متابعه التعليم المستمر-
+							الخاص بنا وعملاءنا،القيام
+							بشرح ما نحتاج الى تحقيقه
+							وتوجيهه واستكشافه</p>
+					</div>
+				</div>
+				<div class="slide1">
+					<div class="testimonial1">
+						<div class="circle">
+							<img src="Images2/12.png" alt="Icon">
+						</div>
+						<p class="testimonial-text">الريادة في المجال اتخاذ
+							الاحكام المناسبة في
+							الوقت الحقيقي ودعـم
+							موظفينا في السعـي
+							لتحقيق جوده الخدمة</p>
+					</div>
+				</div>
+				<div class="slide1">
+					<div class="testimonial1">
+						<div class="circle">
+							<img src="Images2/14.png" alt="Icon">
+						</div>
+						<p class="testimonial-text">اشراك الآخرين عند الاقتضاء
+							وعندما لا يكون هناك تعاون
+							وتعزيز الحكم ، والبحث عن
+							الإجابات الصحيحة</p>
+					</div>
+				</div>
+				<div class="slide1">
+					<div class="testimonial1">
+						<div class="circle">
+							<img src="Images2/15.png" alt="Icon">
+						</div>
+						<p class="testimonial-text">حمل المسؤولية الفردية
+							والجماعية عن كل خدمة</p>
+					</div>
+				</div>
+			</div>
+			<div class="dots-container1">
+				<span class="dotnew" data-slide="0"></span>
+				<span class="dotnew" data-slide="1"></span>
+				<span class="dotnew" data-slide="2"></span>
+				<span class="dotnew" data-slide="3"></span>
+				<span class="dotnew" data-slide="4"></span>
+				<span class="dotnew" data-slide="5"></span>
+				<span class="dotnew" data-slide="6"></span>
+			</div>
+		</div>
+	</section>
+	
+	
+	<!-- contact -->
+	<div class="contact" id="mail">
+		<div class="container">
+			<h3 class="title-w3l">تواصل<span> معنا</span></h3>
+			<div class="map-pos">
+				<div class="col-md-4 address-row">
+					<div class="col-xs-2 address-left">
+						<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+					</div>
+					<div class="col-xs-10 address-right">
+						<h5>موقعنا</h5>
+						<p>صنعاء, شارع الزبيري , عمارة اسحاق</p>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+				<div class="col-md-4 address-row w3-agileits">
+					<div class="col-xs-2 address-left">
+						<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+					</div>
+					<div class="col-xs-10 address-right">
+						<h5>البريد الألكتروني </h5>
+						<p><a href="mailto:aalazee@tagi.com" style="color: #999;"> aalazee@tagi.com</a></p>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+				<div class="col-md-4 address-row">
+					<div class="col-xs-2 address-left">
+						<span class="glyphicon glyphicon-phone" aria-hidden="true"></span>
+					</div>
+					<div class="col-xs-10 address-right">
+						<h5>اتصل بنا</h5>
+						<p>+9671240951</p>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+			<form id="contactForm" action="#" method="post">
+				<div class="col-sm-6 contact-left">
+					<input type="text" name="Name" placeholder="Your Name" required>
+					<input type="email" name="Email" placeholder="Email" required>
+					<input type="text" name="Mobile" placeholder="Mobile Number" required>
+				</div>
+				<div class="col-sm-6 contact-right">
+					<textarea name="Message" placeholder="Message" required></textarea>
+					<input type="submit" value="Submit">
+				</div>
+				<div class="clearfix"></div>
+			</form>
+		</div>
+	</div>
+	<!-- //contact -->
+	
+	<!-- footer section -->
+
+	<section class="unique-contact-section2">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+        <div class="unique-container2">
+            <div class="unique-contact-us">
+                <h2>Contact Us</h2>
+                <p><i class="fas fa-map-marker-alt"></i> Sana'a Office: Ishaq Building,<br>Alzubairi Street</p>
+                <p><i class="fas fa-mobile-alt"></i> 00967771377779</p>
+                <p><i class="fas fa-phone"></i> (+967-1) 500754</p>
+                <p><i class="fas fa-phone"></i> (+967-1) 240951</p>
+                <p><i class="fas fa-envelope"></i> aalazee@tagi.com</p>
+                <p><i class="fas fa-mail-bulk"></i> 2116 SANA'A - REPUBLIC OF YEMEN</p>
+            </div>
+            <div class="unique-work-hours">
+                <h2>Work Hours</h2>
+                <p><i class="far fa-calendar-alt"></i> SAT - THU</p>
+                <p><i class="far fa-clock"></i> 08:00 AM - 02:00 PM</p>
+            </div>
+        </div>
+    </section>
+
+	<!-- //footer section -->
+	<!-- copyright -->
+	<div class="w3layouts_copy_right">
+		<div class="container">
+			<p>© 2024 Alezzi. All rights reserved | Design by ALezzi.</p>
+		</div>
+	</div>
+	<!-- //copyright -->
+
+	<!-- js-scripts -->
+	<!-- js -->
+	<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.js"></script>
+	<!-- Necessary-JavaScript-File-For-Bootstrap -->
+	<!-- //js -->
+	<!-- js for navigation -->
+	<script src="js/classie.js"></script>
+	<script src="js/nav.js"></script>
+	<script src="js/main.js"></script>
+	<!-- //js for navigation -->
+	<!-- js for gallery -->
+	<script src="js/lsb.min.js"></script>
+	<script>
+		$(window).load(function () {
+			$.fn.lightspeedBox();
+		});
+	</script>
+	<!-- //js for gallery -->
+	<!-- search-scripts -->
+	<script src="js/uisearch.js"></script>
+	<script>
+		new UISearch(document.getElementById('sb-search'));
+	</script>
+	<!-- //search-scripts -->
+	<!-- for-middle-section -->
+	<script type="text/javascript">
+		$(window).load(function () {
+			$("#flexiselDemo1").flexisel({
+				visibleItems: 3,
+				animationSpeed: 1000,
+				autoPlay: false,
+				autoPlaySpeed: 3000,
+				pauseOnHover: true,
+				enableResponsiveBreakpoints: true,
+				responsiveBreakpoints: {
+					portrait: {
+						changePoint: 480,
+						visibleItems: 1
+					},
+					landscape: {
+						changePoint: 640,
+						visibleItems: 2
+					},
+					tablet: {
+						changePoint: 768,
+						visibleItems: 3
+					}
+				}
+			});
+		});
+	</script>
+	<script type="text/javascript" src="js/jquery.flexisel.js"></script>
+	<!-- //for-middle-section -->
+	<!-- pricing-tablel -->
+	<script src="js/jquery.magnific-popup.js" type="text/javascript"></script>
+	<script>
+		$(document).ready(function () {
+			$('.popup-with-zoom-anim').magnificPopup({
+				type: 'inline',
+				fixedContentPos: false,
+				fixedBgPos: true,
+				overflowY: 'auto',
+				closeBtnInside: true,
+				preloader: false,
+				midClick: true,
+				removalDelay: 300,
+				mainClass: 'my-mfp-zoom-in'
+			});
+
+		});
+	</script>
+	<!-- //pricing-tablel -->
+	<!-- clients-slider-script -->
+	<script src="js/slideshow.min.js"></script>
+	<script src="js/launcher.js"></script>
+	<!-- //clients-slider-script -->
+	<!-- start-smooth-scrolling -->
+	<script type="text/javascript" src="js/move-top.js"></script>
+	<script type="text/javascript" src="js/easing.js"></script>
+	<script type="text/javascript">
+		jQuery(document).ready(function ($) {
+			$(".scroll").click(function (event) {
+				event.preventDefault();
+
+				$('html,body').animate({
+					scrollTop: $(this.hash).offset().top
+				}, 1000);
+			});
+		});
+	</script>
+	<!-- //end-smooth-scrolling -->
+	<!-- smooth scrolling -->
+	<script src="js/SmoothScroll.min.js"></script>
+	<!-- //smooth scrolling -->
+	<!-- smooth-scrolling-of-move-up -->
+	<script type="text/javascript">
+		$(document).ready(function () {
+			/*
+			var defaults = {
+				containerID: 'toTop', // fading element id
+				containerHoverID: 'toTopHover', // fading element hover id
+				scrollSpeed: 1200,
+				easingType: 'linear' 
+			};
+			*/
+
+			$().UItoTop({
+				easingType: 'easeOutQuart'
+			});
+
+		});
+	</script>
+	<!-- //smooth-scrolling-of-move-up -->
+	<!-- //js-scripts -->
+
+</body>
+
+</html>

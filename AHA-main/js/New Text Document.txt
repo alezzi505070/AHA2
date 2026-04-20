@@ -1,0 +1,71 @@
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+
+const AboutSection = () => {
+  const [activeTab, setActiveTab] = useState(0);
+  const tabs = ['من نحن', 'رؤيتنا', 'أهدافنا'];
+  const contents = [
+    {
+      title: 'عن شركتنا',
+      text: 'تأسس مكتب عبد الرؤوف حسان في عام 1996م وهـو عضو طلال ابوغزاله وشركاه الدولي (TAG-Audit). وهو مكتب متكامل الخدمات يقود عملياته قيادات وطنية يدعمها فرق إقليمية متخصصــــــــة في عملها ومجموعة من الموظفين الموهوبين الذين يتمتعون بقدرات إدارية وخبرات طويلة بمجالات مختلفة.'
+    },
+    {
+      title: 'رؤيتنا',
+      text: 'نسعى لأن نكون الشريك الموثوق به في مجال الخدمات المهنية، ملتزمين بتقديم حلول مبتكرة وذات قيمة مضافة لعملائنا.'
+    },
+    {
+      title: 'أهدافنا',
+      text: 'نهدف إلى تحقيق التميز في خدماتنا، وتطوير كفاءات موظفينا، والمساهمة في نمو وازدهار المجتمع الذي نعمل فيه.'
+    }
+  ];
+
+  return (
+    <div className="bg-gray-100 py-16 rtl">
+      <div className="container mx-auto px-4">
+        <h2 className="text-4xl font-bold text-center text-gray-800 mb-12">عن الشركة</h2>
+        <div className="flex justify-center mb-8">
+          {tabs.map((tab, index) => (
+            <button
+              key={index}
+              className={`px-6 py-3 text-lg font-semibold transition-colors duration-300 ${
+                activeTab === index
+                  ? 'bg-yellow-600 text-white'
+                  : 'bg-gray-200 text-gray-700 hover:bg-yellow-500 hover:text-white'
+              }`}
+              onClick={() => setActiveTab(index)}
+            >
+              {tab}
+            </button>
+          ))}
+        </div>
+        <div className="flex flex-col md:flex-row items-center bg-white rounded-lg shadow-lg overflow-hidden">
+          <motion.div
+            key={activeTab}
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+            className="md:w-1/2 p-8"
+          >
+            <h3 className="text-2xl font-bold text-yellow-600 mb-4">{contents[activeTab].title}</h3>
+            <p className="text-gray-700 leading-relaxed">{contents[activeTab].text}</p>
+          </motion.div>
+          <motion.div
+            key={`img-${activeTab}`}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+            className="md:w-1/2 h-64 md:h-auto"
+          >
+            <img
+              src="/api/placeholder/600/400"
+              alt="About Us"
+              className="w-full h-full object-cover"
+            />
+          </motion.div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default AboutSection;
